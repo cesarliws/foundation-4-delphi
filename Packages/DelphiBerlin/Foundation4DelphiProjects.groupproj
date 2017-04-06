@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{B6E19900-964E-45D4-9EFC-6B8E33E89C39}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Foundation4Delphi.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\Tests\Foundation4DelphiTests.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Foundation4DelphiExperimental.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\Experimental\Foundation4DelphiExperimentalTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Foundation4Delphi">
+        <MSBuild Projects="Foundation4Delphi.dproj"/>
+    </Target>
+    <Target Name="Foundation4Delphi:Clean">
+        <MSBuild Projects="Foundation4Delphi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Foundation4Delphi:Make">
+        <MSBuild Projects="Foundation4Delphi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Foundation4DelphiTests">
+        <MSBuild Projects="..\..\Tests\Foundation4DelphiTests.dproj"/>
+    </Target>
+    <Target Name="Foundation4DelphiTests:Clean">
+        <MSBuild Projects="..\..\Tests\Foundation4DelphiTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Foundation4DelphiTests:Make">
+        <MSBuild Projects="..\..\Tests\Foundation4DelphiTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Foundation4DelphiExperimental">
+        <MSBuild Projects="Foundation4DelphiExperimental.dproj"/>
+    </Target>
+    <Target Name="Foundation4DelphiExperimental:Clean">
+        <MSBuild Projects="Foundation4DelphiExperimental.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Foundation4DelphiExperimental:Make">
+        <MSBuild Projects="Foundation4DelphiExperimental.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Foundation4DelphiExperimentalTests">
+        <MSBuild Projects="..\..\Experimental\Foundation4DelphiExperimentalTests.dproj"/>
+    </Target>
+    <Target Name="Foundation4DelphiExperimentalTests:Clean">
+        <MSBuild Projects="..\..\Experimental\Foundation4DelphiExperimentalTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Foundation4DelphiExperimentalTests:Make">
+        <MSBuild Projects="..\..\Experimental\Foundation4DelphiExperimentalTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Foundation4Delphi;Foundation4DelphiTests;Foundation4DelphiExperimental;Foundation4DelphiExperimentalTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Foundation4Delphi:Clean;Foundation4DelphiTests:Clean;Foundation4DelphiExperimental:Clean;Foundation4DelphiExperimentalTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Foundation4Delphi:Make;Foundation4DelphiTests:Make;Foundation4DelphiExperimental:Make;Foundation4DelphiExperimentalTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
